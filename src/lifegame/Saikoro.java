@@ -1,5 +1,5 @@
 package lifegame;
 
-public class saikoro {
+public class Saikoro {
 
 }
