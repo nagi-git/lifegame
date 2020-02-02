@@ -9,15 +9,23 @@ public class Player {
 	int dice;
 	int money;
 
-	Player (String name, int dice, int money) {
-		this.name = name;
-		this.dice = dice;
-		this.money = money;
+	Player () {
+		this.name = inputName();
+		this.dice = 0;
+		this.money = 10000;
 	}
 
-	void inputName()throws IOException {
+	String inputName() {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); //ユーザーがプレイヤーの名前を入力する
-		System.out.println("名前を入力 >");
-		this.name = br.readLine(); //プレイヤーの名前
+		try {
+			System.out.println("名前を入力 >");
+			return br.readLine(); //プレイヤーの名前
+		} catch (IOException e) {
+			e.printStackTrace();
+			return inputName();
+		}
 	}
+
+
+
 }
