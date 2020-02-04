@@ -21,7 +21,7 @@ public class Numberofplayers {
 			Player player = new Player();
 			System.out.println("プレイヤー" + i + "は" + player.name + "さんです。");
 // 			System.out.println(player.name + "さんが振った目の数は" + saikoro.dice + "です。");
-			System.out.println(player.name + "さんの現在のコマ数合計は" + player.totaldice + "です。");
+			System.out.println(player.name + "さんの現在のコマ数合計は" + player.totalDice + "です。");
 			System.out.println(player.name + "さんの現在の所持金は" + player.money + "円です。");
 			System.out.println("");
 
@@ -32,6 +32,8 @@ public class Numberofplayers {
 		for(int i = 0; i < number; i++) {
 			Player player = players[i];
 			int rollNumber = player.roll(saikoro);
+			int totalDice = player.addDice(rollNumber);
+			enter();
 		}
 //		do {
 //
@@ -47,6 +49,16 @@ public class Numberofplayers {
 //			e.printStackTrace();
 			System.out.println("プレイヤーの数(半角数字)を入力してください。=>");
 			return inputPlayerNumber();
+		}
+	}
+
+	public static void enter() {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); //ユーザーがプレイヤーの数を入力する
+		System.out.println("エンターキーを押してください。");
+		try {
+			br.readLine();
+		} catch (NumberFormatException | IOException e) {
+//			e.printStackTrace();
 		}
 	}
 

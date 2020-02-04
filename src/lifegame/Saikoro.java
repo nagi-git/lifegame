@@ -5,7 +5,7 @@ import java.util.Random;
 public class Saikoro {
 	Random random = new Random();
 
-	int dice() {
+	int randomNumber() {
 		return this.random.nextInt(6) + 1;
 	}
 }
