@@ -1,15 +1,11 @@
 package lifegame;
 
-public class Saikoro {
-	int dice;
-	int totaldice = 0;
+import java.util.Random;
 
-	Saikoro () {
-		this.dice = 0;
-		this.totaldice = 
-	}
-	
-	int sumdice() {
-		
+public class Saikoro {
+	Random random = new Random();
+
+	int dice() {
+		return this.random.nextInt(6) + 1;
 	}
 }

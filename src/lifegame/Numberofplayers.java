@@ -20,7 +20,7 @@ public class Numberofplayers {
 			System.out.println("プレイヤー" + i + "の名前を入力してください。=>");
 			Player player = new Player();
 			System.out.println("プレイヤー" + i + "は" + player.name + "さんです。");
- 			System.out.println(player.name + "さんが振った目の数は" + saikoro.dice + "です。");
+// 			System.out.println(player.name + "さんが振った目の数は" + saikoro.dice + "です。");
 			System.out.println(player.name + "さんの現在のコマ数合計は" + player.totaldice + "です。");
 			System.out.println(player.name + "さんの現在の所持金は" + player.money + "円です。");
 			System.out.println("");
@@ -28,12 +28,14 @@ public class Numberofplayers {
 			players[i - 1] = player;
 		}
 
-		do {
-			for(int i = 0; i < number; i++) {
-				Player player = players[i];
- 				player.roll();
-			}
-		} while(true);
+
+		for(int i = 0; i < number; i++) {
+			Player player = players[i];
+			int rollNumber = player.roll(saikoro);
+		}
+//		do {
+//
+//		} while(isEnd(rollNumber));
 	}
 
 	public static int inputPlayerNumber() {
@@ -47,4 +49,12 @@ public class Numberofplayers {
 			return inputPlayerNumber();
 		}
 	}
+
+//	public static boolean isEnd(int rollNumber) {
+//		if(rollNumber == 1 || rollNumber == 2 || ) {
+//			return true;
+//		}else {
+//
+//		}
+//	}
 }

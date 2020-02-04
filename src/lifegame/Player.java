@@ -3,7 +3,6 @@ package lifegame;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Random;
 
 public class Player {
 	String name;
@@ -27,9 +26,10 @@ public class Player {
 		}
 	}
 
-	int roll() {
+	int roll(Saikoro saikoro) {
+		int rollNumber = saikoro.dice();
 		System.out.println(this.name + "さんがサイコロを振りました。");
-		Random random = new Random();
-		return random.nextInt(6);
+		System.out.println(rollNumber);
+		return rollNumber;
 	}
 }
