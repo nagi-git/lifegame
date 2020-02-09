@@ -1,29 +1,34 @@
 package lifegame;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
 public class Player {
+
+	private static String[] NAMES = new String[] {"MMM", "RRR"};
+	private static int COUNT = -1;
+
+
 	String name;
 	int totalDice;
-	int money;
+	Wallet wallet;
+	Job job;
 
 	Player () {
 		this.name = inputName();
 		this.totalDice = 0;
-		this.money = 10000;
+		this.wallet = new Wallet(10000);
+		this.job = Job.jobChoice();
 	}
 
 	String inputName() {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); //ユーザーがプレイヤーの名前を入力する
-		try {
-
-			return br.readLine(); //プレイヤーの名前
-		} catch (IOException e) {
-			e.printStackTrace();
-			return inputName();
-		}
+		COUNT++;
+		return NAMES[COUNT];
+//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); //ユーザーがプレイヤーの名前を入力する
+//		try {
+//
+//			return br.readLine(); //プレイヤーの名前
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//			return inputName();
+//		}
 	}
 
 	int roll(Saikoro saikoro) {

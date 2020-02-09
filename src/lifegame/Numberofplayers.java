@@ -9,20 +9,20 @@ public class Numberofplayers {
 	public static void main(String[] args) {
 
 		//number = ユーザーの入力したプレイヤー数
-		int number = inputPlayerNumber();
+//		int number = inputPlayerNumber();
+		int number = 2;
 		System.out.println("プレイヤーの数を" + number + "人に設定しました。");
 		System.out.println("");
 
- 		Saikoro saikoro = new Saikoro();
+		Saikoro saikoro = new Saikoro();
 
 		Player[] players = new Player[number];
 		for(int i = 1; i <= number; i++) {
 			System.out.println("プレイヤー" + i + "の名前を入力してください。=>");
 			Player player = new Player();
 			System.out.println("プレイヤー" + i + "は" + player.name + "さんです。");
-// 			System.out.println(player.name + "さんが振った目の数は" + saikoro.dice + "です。");
-			System.out.println(player.name + "さんの現在のコマ数合計は" + player.totalDice + "です。");
-			System.out.println(player.name + "さんの現在の所持金は" + player.money + "円です。");
+			System.out.println(player.name + "さんの職業は" + player.job.name() + "です。月に" + player.job.salary() + "もらえます。");
+
 			System.out.println("");
 
 			players[i - 1] = player;
@@ -33,6 +33,12 @@ public class Numberofplayers {
 			Player player = players[i];
 			int rollNumber = player.roll(saikoro);
 			int totalDice = player.addDice(rollNumber);
+
+			player.wallet.addMoney(player.job.salary());
+
+// 			System.out.println(player.name + "さんが振った目の数は" + saikoro.dice + "です。");
+//			System.out.println(player.name + "さんの現在のコマ数合計は" + player.totalDice + "です。");
+//			System.out.println(player.name + "さんの現在の所持金は" + player.money + "円です。");
 			enter();
 		}
 //		do {
