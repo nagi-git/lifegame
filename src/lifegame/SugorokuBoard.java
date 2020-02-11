@@ -18,19 +18,24 @@ public class SugorokuBoard {
 
 			int cellNum = i;
 
-			if(cellNum == 3) {
+			switch(cellNum) {
+			case 3:
 				AbstractEvent event = new LotteryEvent();
 				cells.add(new Cell(cellNum, event));
-			} else if(cellNum == 13) {
-				AbstractEvent event = new BuyCarEvent();
+				break;
+			case 13:
+				event = new BuyCarEvent();
 				cells.add(new Cell(cellNum, event));
-			} else if(cellNum == 23) {
-				AbstractEvent event = new BonusEvent();
+				break;
+			case 23:
+				event = new BonusEvent();
 				cells.add(new Cell(cellNum, event));
-			} else if(cellNum == 23) {
-				AbstractEvent event = new BuyHouseEvent();
+				break;
+			case 33:
+				event = new BuyHouseEvent();
 				cells.add(new Cell(cellNum, event));
-			} else {
+				break;
+			default:
 				cells.add(new Cell(cellNum, null));
 			}
 		}
