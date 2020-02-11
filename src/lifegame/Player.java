@@ -8,7 +8,7 @@ public class Player {
 
 	String name;
 	int totalDice;
-	Wallet wallet;
+	public Wallet wallet;
 	Job job;
 
 	Player () {
@@ -35,13 +35,15 @@ public class Player {
 		int rollNumber = saikoro.randomNumber();
 		System.out.println(this.name + "さんがサイコロを振りました。");
 		System.out.println("サイコロの目は" + rollNumber + "でした。");
-		return rollNumber;
+
+		this.totalDice += rollNumber;
+		System.out.println("現在のコマ数合計は" + this.totalDice + "です。");
+		return this.totalDice;
 	}
 
-	int addDice(int dice) {
-		this.totalDice += dice;
-		System.out.println(this.name + "さんの現在のコマ数合計は" + this.totalDice + "です。");
-		return this.totalDice;
+	public void earnSalary() {
+		this.wallet.addMoney(this.job.salary());
+		System.out.println(this.job.name() + "のお給料" + this.job.salary() + "円をもらいました。");
 	}
 
 }
