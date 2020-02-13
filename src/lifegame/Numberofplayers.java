@@ -3,8 +3,12 @@ package lifegame;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Numberofplayers {
+
+	private final static int TOTAL_DICE = 50;
 
 	public static void main(String[] args) {
 		SugorokuBoard sugorokuBoard = new SugorokuBoard();
@@ -16,7 +20,7 @@ public class Numberofplayers {
 
 		Saikoro saikoro = new Saikoro();
 
-		Player[] players = new Player[number];
+		List<Player> players = new ArrayList<>();
 		for(int i = 1; i <= number; i++) {
 			System.out.println("プレイヤー" + i + "の名前を入力してください。=>");
 			Player player = new Player();
@@ -25,31 +29,31 @@ public class Numberofplayers {
 
 			System.out.println("");
 
-			players[i - 1] = player;
+			players.add(player);
 		}
 
+		do {
+			for(Player player : players) {
+				if (isEnd(player.totalDice)){
+					continue;
+				}
+				player.roll(saikoro);
 
-		for(int i = 0; i < number; i++) {
-			Player player = players[i];
+				if (isEnd(player.totalDice)){
+					continue;
+				}
 
-			player.roll(saikoro);
+				sugorokuBoard.callEvent(player);
 
-			sugorokuBoard.callEvent(player);
+				player.earnSalary();
 
-			player.earnSalary();
+				System.out.println("現在の所持金は" + player.wallet.toString() + "円です。");
 
+				enter();
 
+			}
 
-			System.out.println("現在の所持金は" + player.wallet.toString() + "円です。");
-
-// 			System.out.println(player.name + "さんが振った目の数は" + saikoro.dice + "です。");
-//			System.out.println(player.name + "さんの現在のコマ数合計は" + player.totalDice + "です。");
-//			System.out.println(player.name + "さんの現在の所持金は" + player.money + "円です。");
-			enter();
-		}
-//		do {
-//
-//		} while(isEnd(rollNumber));
+		} while(!isEnd(players));
 	}
 
 	public static int inputPlayerNumber() {
@@ -74,11 +78,20 @@ public class Numberofplayers {
 		}
 	}
 
-//	public static boolean isEnd(int rollNumber) {
-//		if(rollNumber == 1 || rollNumber == 2 || ) {
-//			return true;
-//		}else {
-//
-//		}
-//	}
+	public static boolean isEnd(int totalDice) {
+		if(totalDice >= TOTAL_DICE ) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public static boolean isEnd(List<Player> players) {
+		for (Player player : players) {
+			if(player.totalDice < TOTAL_DICE) {
+				return false;
+			}
+		}
+		return true;
+	}
 }

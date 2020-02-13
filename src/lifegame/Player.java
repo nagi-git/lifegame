@@ -41,6 +41,8 @@ public class Player {
 		return this.totalDice;
 	}
 
+
+
 	public void earnSalary() {
 		this.wallet.addMoney(this.job.salary());
 		System.out.println(this.job.name() + "のお給料" + this.job.salary() + "円をもらいました。");
