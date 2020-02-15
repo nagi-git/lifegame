@@ -7,6 +7,7 @@ import lifegame.event.AbstractEvent;
 import lifegame.event.BonusEvent;
 import lifegame.event.BuyCarEvent;
 import lifegame.event.BuyHouseEvent;
+import lifegame.event.GoalRewardEvent;
 import lifegame.event.LotteryEvent;
 
 public class SugorokuBoard {
@@ -14,7 +15,7 @@ public class SugorokuBoard {
 
 	public SugorokuBoard() {
 
-		for (int i = 0; i < 50; i++) {
+		for (int i = 0; i <= 50; i++) {
 
 			int cellNum = i;
 
@@ -33,6 +34,10 @@ public class SugorokuBoard {
 				break;
 			case 33:
 				event = new BuyHouseEvent();
+				cells.add(new Cell(cellNum, event));
+				break;
+			case 50:
+				event = new GoalRewardEvent();
 				cells.add(new Cell(cellNum, event));
 				break;
 			default:

@@ -36,7 +36,11 @@ public class Player {
 		System.out.println(this.name + "さんがサイコロを振りました。");
 		System.out.println("サイコロの目は" + rollNumber + "でした。");
 
-		this.totalDice += rollNumber;
+		if((this.totalDice + rollNumber) >= 50 ) {
+			this.totalDice = 50;
+		} else {
+			this.totalDice += rollNumber;
+		}
 		System.out.println("現在のコマ数合計は" + this.totalDice + "です。");
 		return this.totalDice;
 	}

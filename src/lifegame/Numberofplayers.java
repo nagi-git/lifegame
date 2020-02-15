@@ -32,28 +32,29 @@ public class Numberofplayers {
 			players.add(player);
 		}
 
-		do {
+		for(int i = 1; !isEnd(players); i++) {
+			System.out.println( i + "回目のターンです");
 			for(Player player : players) {
 				if (isEnd(player.totalDice)){
 					continue;
 				}
 				player.roll(saikoro);
 
-				if (isEnd(player.totalDice)){
-					continue;
-				}
+				player.earnSalary();
 
 				sugorokuBoard.callEvent(player);
 
-				player.earnSalary();
-
 				System.out.println("現在の所持金は" + player.wallet.toString() + "円です。");
 
+				if (isEnd(player.totalDice)){
+
+					enter();
+					continue;
+				}
+
 				enter();
-
 			}
-
-		} while(!isEnd(players));
+		}
 	}
 
 	public static int inputPlayerNumber() {
