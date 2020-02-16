@@ -18,4 +18,8 @@ public class Wallet {
 		return Integer.toString(this.money);
 	}
 
+	public int getMoney() {
+		return money;
+	}
+
 }

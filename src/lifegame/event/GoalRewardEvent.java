@@ -25,7 +25,7 @@ public class GoalRewardEvent extends AbstractEvent {
 			int reward = GOAL_REWARD[this.currentRank - 1];
 
 			System.out.println("ゴールしました。" + this.currentRank + "番目にゴールしたので、報酬として" + reward + "円もらいました。");
-			player.wallet.addMoney(reward);
+			player.getWallet().addMoney(reward);
 		} else {
 			System.out.println("ゴールしました。" + this.currentRank + "番目にゴールしたので、報酬はありません。");
 		}

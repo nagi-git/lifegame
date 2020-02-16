@@ -11,7 +11,7 @@ public abstract class AbstractEvent {
 
 	public void processEvent(Player player, int turnNumber) {
 		System.out.println(this.getActionMessage());
-		player.wallet.addMoney(depositAmount);
+		player.getWallet().addMoney(depositAmount);
 	}
 
 	public String getActionMessage() {

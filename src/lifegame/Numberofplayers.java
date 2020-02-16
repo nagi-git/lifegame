@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Numberofplayers {
@@ -14,7 +15,7 @@ public class Numberofplayers {
 		SugorokuBoard sugorokuBoard = new SugorokuBoard();
 		//number = ユーザーの入力したプレイヤー数
 //		int number = inputPlayerNumber();
-		int number = 2;
+		int number = 4;
 		System.out.println("プレイヤーの数を" + number + "人に設定しました。");
 		System.out.println("");
 
@@ -44,7 +45,7 @@ public class Numberofplayers {
 
 				sugorokuBoard.callEvent(player, i);
 
-				System.out.println("現在の所持金は" + player.wallet.toString() + "円です。");
+				System.out.println("現在の所持金は" + player.getWallet().toString() + "円です。");
 
 				if (isEnd(player.totalDice)){
 
@@ -55,6 +56,8 @@ public class Numberofplayers {
 				enter();
 			}
 		}
+
+		rankWallet(players);
 	}
 
 	public static int inputPlayerNumber() {
@@ -94,5 +97,28 @@ public class Numberofplayers {
 			}
 		}
 		return true;
+	}
+
+	public static void rankWallet(List<Player> players) {
+		players.sort(
+			new Comparator<Player>() {
+
+				@Override
+				public int compare(Player obj1, Player obj2) {
+					if(obj1.getWallet().getMoney() < obj2.getWallet().getMoney()) {
+						return 1;
+					} else if (obj1.getWallet().getMoney() > obj2.getWallet().getMoney()) {
+						return -1;
+					} else {
+						return 0;
+					}
+				}
+			}
+		);
+
+		for(int i = 0; i < players.size(); i++) {
+			Player player = players.get(i);
+			System.out.println(i + 1 + "位: " + player.name + "さん " + player.getWallet() + "円");
+		}
 	}
 }

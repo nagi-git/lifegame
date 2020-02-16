@@ -2,13 +2,13 @@ package lifegame;
 
 public class Player {
 
-	private static String[] NAMES = new String[] {"MMM", "RRR"};
+	private static String[] NAMES = new String[] {"MMM", "RRR", "kkk", "jjj"};
 	private static int COUNT = -1;
 
 
 	String name;
 	int totalDice;
-	public Wallet wallet;
+	private Wallet wallet;
 	Job job;
 
 	Player () {
@@ -16,6 +16,10 @@ public class Player {
 		this.totalDice = 0;
 		this.wallet = new Wallet(10000);
 		this.job = Job.jobChoice();
+	}
+
+	public Wallet getWallet() {
+		return wallet;
 	}
 
 	String inputName() {
