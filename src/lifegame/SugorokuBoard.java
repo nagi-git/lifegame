@@ -46,7 +46,7 @@ public class SugorokuBoard {
 		}
 	}
 
-	public void callEvent(Player player) {
+	public void callEvent(Player player, int turnNumber) {
 //		this.cells.get(player.totalDice).getEvent().processEvent(player);
 
 		int totalDice = player.totalDice;
@@ -56,7 +56,7 @@ public class SugorokuBoard {
 		AbstractEvent event = cell.getEvent();
 
 		if(event != null) {
-			event.processEvent(player);
+			event.processEvent(player, turnNumber);
 		}
 
 

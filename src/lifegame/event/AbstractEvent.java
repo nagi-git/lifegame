@@ -9,11 +9,13 @@ public abstract class AbstractEvent {
 		this.depositAmount = depositAmount;
 	}
 
-	public void processEvent(Player player) {
+	public void processEvent(Player player, int turnNumber) {
 		System.out.println(this.getActionMessage());
 		player.wallet.addMoney(depositAmount);
 	}
 
-	public abstract String getActionMessage();
+	public String getActionMessage() {
+		return "";
+	}
 
 }

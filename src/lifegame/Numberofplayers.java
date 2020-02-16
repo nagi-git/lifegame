@@ -42,7 +42,7 @@ public class Numberofplayers {
 
 				player.earnSalary();
 
-				sugorokuBoard.callEvent(player);
+				sugorokuBoard.callEvent(player, i);
 
 				System.out.println("現在の所持金は" + player.wallet.toString() + "円です。");
 
