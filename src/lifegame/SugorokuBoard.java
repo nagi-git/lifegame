@@ -14,14 +14,20 @@ import lifegame.event.LotteryEvent;
  * すごろくボードのクラス
  */
 public class SugorokuBoard {
-	List<Cell> cells = new ArrayList<>();
+
+	/** すごろくの全マス数 */
+	public final static int MAX_TOTAL_DICE = 50;
+
+	/** マスのリスト */
+	private List<Cell> cells = new ArrayList<>();
 
 	/**
 	 * コンストラクタ
+	 * @param totalDice すごろくの全マス数
 	 */
 	public SugorokuBoard() {
 
-		for (int i = 0; i <= 50; i++) {
+		for (int i = 0; i <= MAX_TOTAL_DICE; i++) {
 
 			int cellNum = i;
 
@@ -42,7 +48,7 @@ public class SugorokuBoard {
 				event = new BuyHouseEvent();
 				cells.add(new Cell(event));
 				break;
-			case 50:
+			case MAX_TOTAL_DICE:
 				event = new GoalRewardEvent();
 				cells.add(new Cell(event));
 				break;
@@ -61,7 +67,7 @@ public class SugorokuBoard {
 	 */
 	public void callEvent(Player player, int turnNumber) {
 
-		int totalDice = player.totalDice;
+		int totalDice = player.getTotalDice();
 
 		Cell cell = this.cells.get(totalDice);
 

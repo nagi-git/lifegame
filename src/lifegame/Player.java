@@ -11,26 +11,45 @@ import java.io.InputStreamReader;
 public class Player {
 
 	/** 名前 */
-	String name;
+	private String name;
 
 	/** 現在のマス目 */
-	int totalDice;
+	private int totalDice;
 
 	/** 所持金を入れる財布 */
 	private Wallet wallet;
 
 	/** 職業 */
-	Job job;
+	private Job job;
 
 	/**
 	 * コンストラクタ
 	 * @param playerNumber プレイヤーの通し番号
 	 */
-	Player (int playerNumber) {
+	public Player(int playerNumber) {
 		this.name = inputName(playerNumber);
 		this.totalDice = 0;
 		this.wallet = new Wallet(10000);
 		this.job = Job.jobChoice();
+
+		System.out.println("プレイヤー" + playerNumber + "は" + this.name + "さんです。");
+		System.out.println(this.name + "さんの職業は" + this.job.name() + "です。月に" + this.job.salary() + "円もらえます。\n");
+	}
+
+	/**
+	 * 名前を取得
+	 * @return 名前
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * 現在のマス目を取得
+	 * @return 現在のマス目
+	 */
+	public int getTotalDice() {
+		return totalDice;
 	}
 
 	/**
@@ -46,7 +65,7 @@ public class Player {
 	 * @param playerNumber プレイヤーの通し番号
 	 * @return 入力したプレイヤー名
 	 */
-	String inputName(int playerNumber) {
+	private String inputName(int playerNumber) {
 		System.out.println("プレイヤー" + playerNumber + "の名前を入力してください。=>");
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); //ユーザーがプレイヤーの名前を入力する
 		try {
@@ -61,13 +80,13 @@ public class Player {
 	 * @param saikoro サイコロの目
 	 * @return totalDice 現在のマス目
 	 */
-	int roll(Saikoro saikoro) {
+	public int roll(Saikoro saikoro) {
 		int rollNumber = saikoro.randomNumber();
 		System.out.println(this.name + "さんがサイコロを振りました。");
 		System.out.println("サイコロの目は" + rollNumber + "でした。");
 
-		if((this.totalDice + rollNumber) >= 50 ) {
-			this.totalDice = 50;
+		if((this.totalDice + rollNumber) >= SugorokuBoard.MAX_TOTAL_DICE) {
+			this.totalDice = SugorokuBoard.MAX_TOTAL_DICE;
 		} else {
 			this.totalDice += rollNumber;
 		}

@@ -21,7 +21,7 @@ public class BonusEvent extends AbstractEvent {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String getActionMessage() {
+	protected String getActionMessage() {
 		return "ボーナス" + BONUS + "円をもらいました。";
 	}
 

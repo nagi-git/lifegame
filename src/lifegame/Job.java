@@ -30,7 +30,7 @@ public enum Job {
      * @param salary 給料
      * @return 仕事
      */
-	public static Job jobChoice() {
+	protected static Job jobChoice() {
 		Job[] jobs = Job.values();
 
 		Random random = new Random();
@@ -45,7 +45,7 @@ public enum Job {
 	 * 給料を返す
 	 * @return 給料
 	 */
-	public int salary() {
+	protected int salary() {
 		return this.salary;
 	}
 }

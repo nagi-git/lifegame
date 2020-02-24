@@ -21,7 +21,7 @@ public class BuyCarEvent extends AbstractEvent {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String getActionMessage() {
+	protected String getActionMessage() {
 		return "車を買ったので" + (- CARPRICE) + "円減りました。";
 	}
 }

@@ -20,7 +20,7 @@ public class LotteryEvent extends AbstractEvent {
 	* {@inheritDoc}
 	*/
 	@Override
-	public String getActionMessage() {
+	protected String getActionMessage() {
 		return "宝くじが当たり" + WINNINGS + "円をもらいました。";
 	}
 

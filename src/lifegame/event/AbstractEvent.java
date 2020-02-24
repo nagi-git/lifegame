@@ -8,7 +8,7 @@ import lifegame.Player;
  */
 public abstract class AbstractEvent {
 
-	int depositAmount;
+	private int depositAmount;
 
 	/**
 	 * コンストラクタ
@@ -31,7 +31,7 @@ public abstract class AbstractEvent {
 	/**
 	 * メッセージを取得
 	 */
-	public String getActionMessage() {
+	protected String getActionMessage() {
 		return "";
 	}
 

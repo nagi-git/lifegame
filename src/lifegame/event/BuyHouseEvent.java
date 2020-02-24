@@ -21,7 +21,7 @@ public class BuyHouseEvent extends AbstractEvent {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public String getActionMessage() {
+	protected String getActionMessage() {
 		return "家を買ったので" + (- HOUSEPRICE) + "円減りました。";
 	}
 }

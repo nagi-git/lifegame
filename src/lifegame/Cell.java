@@ -15,7 +15,7 @@ public class Cell {
 	 * コンストラクタ
 	 * @param event セルで発生するイベント
 	 */
-	public Cell(AbstractEvent event) {
+	protected Cell(AbstractEvent event) {
 		this.event = event;
 	}
 
