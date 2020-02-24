@@ -2,17 +2,26 @@ package lifegame;
 
 import lifegame.event.AbstractEvent;
 
+/**
+ * すごろくボードのマスを定義
+ * @author minami
+ */
 public class Cell {
 
-
-	private int cellNum;
+	/** セルで発生するイベント */
 	private AbstractEvent event;
 
-	public Cell(int cellNum, AbstractEvent event) {
-		this.cellNum = cellNum;
+	/**
+	 * コンストラクタ
+	 * @param event セルで発生するイベント
+	 */
+	public Cell(AbstractEvent event) {
 		this.event = event;
 	}
 
+	/**
+	 * イベントを返す
+	 */
 	public AbstractEvent getEvent() {
 		return event;
 	}
